@@ -35,7 +35,7 @@ exports.create = async (req, res) => {
         data: JSON.stringify(userDetails),
         is_complete: false,
         is_approved: false,
-        data_channel: 'tb_users',
+        data_channel: 'sys_users',
         created_by: "admin",
     }
     Staging.create(stageArray)
@@ -68,7 +68,7 @@ exports.approveUser = async (req, res) => {
             let userApproved = await Staging.findOne({
                 where: {
                     id: req.body.id,
-                    data_channel: 'tb_users'
+                    data_channel: 'sys_users'
                 }
             });
             let createJsonRequest = JSON.parse(userApproved['data'])
